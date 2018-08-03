@@ -1,5 +1,6 @@
 package edu.bu.met.cs665;
 
+import java.util.Random;
 import java.util.Scanner;
 import edu.bu.met.cs665.question.ConcreteQuestionFactory;
 import edu.bu.met.cs665.question.Question;
@@ -14,10 +15,29 @@ public class Main {
   public static void main(String[] args) {
     Scanner in = new Scanner(System.in);
     QuestionFactory questionFactory = new ConcreteQuestionFactory();
-    Question question = questionFactory.getQuestion(0);
-    System.out.println(question.getQuestion());
-    String userAnswer = in.nextLine();
-    System.out.println(question.checkForCorrectAnswer(userAnswer));
+    Question question = null;
+    Random random = new Random();
+    // numQuestionsOptions maps to the number of Question subclasses.
+    // In other words, this is the max number of the types of questions we can randomly choose.
+    int numQuestionOptions = 3;
+    while(true){
+      question = questionFactory.getQuestion(random.nextInt(numQuestionOptions));
+//      question = questionFactory.getQuestion(1);
+      System.out.println(question.getQuestion());
+      String userAnswer = in.nextLine();
+      if(question.checkForCorrectAnswer(userAnswer)){
+        System.out.println("Correct answer");
+      }else{
+        System.out.println("Incorrect.  The correct answer was: " + question.getAnswer());
+      }
+      System.out.println("Press q to quit or any other key to continue: ");
+      String userPicksAnotherQuestion = in.nextLine();
+      if(userPicksAnotherQuestion.toLowerCase().equals("q")){
+        System.out.println("Goodbye!");
+        break;
+      }
+    }
+
     in.close();
   }
 

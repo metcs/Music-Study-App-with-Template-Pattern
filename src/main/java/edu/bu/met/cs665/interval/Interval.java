@@ -58,7 +58,10 @@ public class Interval {
   
   public static String pitchNumberToChromaticNoteName(int pitchNumber){
     if(pitchNumber < 0){
-      throw new IllegalArgumentException("Pitch numbers cannot be negative");
+//      throw new IllegalArgumentException("Pitch numbers cannot be negative");
+      while(pitchNumber < 0){
+        pitchNumber += 12;
+      }
     }
     String noteName = null;
     // Reduce the pitch number to fit into one octave
@@ -104,4 +107,20 @@ public class Interval {
     return noteName;
   }
 
+  public static String altoClefNoteNameForLineNumber(int lineNumber){
+    String lineName = null;
+    switch(lineNumber){
+      case 0: lineName = "F";
+        break;
+      case 1: lineName = "A";
+        break;
+      case 2: lineName = "C";
+        break;
+      case 3: lineName = "E";
+        break;
+      case 4: lineName = "G";
+        break;
+    }
+    return lineName;
+  }
 }

@@ -10,9 +10,6 @@ public class SimpleIntervalUpQuestion extends Question {
   private String question;
   private String answer;
   
-  public SimpleIntervalUpQuestion(){
-    super.initialize();
-  }
   
   @Override
   public void createQuestion() {
@@ -34,7 +31,7 @@ public class SimpleIntervalUpQuestion extends Question {
 
   @Override
   public boolean checkForCorrectAnswer(String givenAnswer) {
-    return this.answer.equals(givenAnswer);
+    return formatAnswer(givenAnswer).equals(this.answer);
   }
 
   @Override
@@ -44,6 +41,11 @@ public class SimpleIntervalUpQuestion extends Question {
     // The mapping is currently not complete, so this is the current upper bound on this
     // TODO After the mapping is finished, changed the upper bound on this random value
     this.halfStepsUp = random.nextInt(7);
+  }
+
+  @Override
+  public String getAnswer() {
+    return this.answer;
   }
 
 }
