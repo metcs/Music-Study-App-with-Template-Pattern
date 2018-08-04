@@ -8,14 +8,14 @@ public class SimpleIntervalDownQuestion extends Question {
   private String answer;
   private int intervalDown;
   private int bassNote;
-  
-  
+
+
   @Override
   public void createQuestion() {
     this.question = String.format("What is the note a %s %s?",
-        Interval.numerOfHalfStepsAsString(this.intervalDown), 
+        Interval.numerOfHalfStepsAsString(this.intervalDown),
         Interval.pitchNumberToChromaticNoteName(this.bassNote));
-        
+
   }
 
   @Override
@@ -42,6 +42,7 @@ public class SimpleIntervalDownQuestion extends Question {
 
   @Override
   public boolean checkForCorrectAnswer(String givenAnswer) {
+    // Format the incoming answer to the expected format.
     return formatAnswer(givenAnswer).equals(this.answer);
   }
 

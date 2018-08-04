@@ -1,72 +1,90 @@
 package edu.bu.met.cs665.interval;
 
+/**
+ * Class for defining the mapping of musical constants that will be use in questions
+ * 
+ * @author Richard Hanks
+ *
+ */
+
 public class Interval {
-  
-  public static String numerOfHalfStepsAsString(int noteNumber){
+
+  /**
+   * 
+   * @param noteNumber The number of half steps in an interval.
+   * @return The string representation of the size of the interval.
+   */
+  public static String numerOfHalfStepsAsString(int noteNumber) {
     String returnString = null;
-    switch (noteNumber){
+    switch (noteNumber) {
       case 0:
         returnString = "perfect unison";
         break;
       case 1:
-         returnString = "minor second above";
-         break;
+        returnString = "minor second above";
+        break;
       case 2:
         returnString = "major second above";
         break;
       case 3:
-         returnString = "minor third above";
-         break;
+        returnString = "minor third above";
+        break;
       case 4:
-          returnString = "major third above";
-          break;
+        returnString = "major third above";
+        break;
       case 5:
-          returnString = "perfect fourth above";
-          break;
+        returnString = "perfect fourth above";
+        break;
       case 6:
-          returnString = "tritone above";
-          break;
+        returnString = "tritone above";
+        break;
       case 7:
-          returnString = "perfect fifth above";
-          break;
+        returnString = "perfect fifth above";
+        break;
       case -1:
-          returnString = "minor second below";
-          break;
+        returnString = "minor second below";
+        break;
       case -2:
-          returnString = "major second below";
-          break;
+        returnString = "major second below";
+        break;
       case -3:
-          returnString = "minor third below";
-          break;
+        returnString = "minor third below";
+        break;
       case -4:
-          returnString = "major third below";
-          break;
+        returnString = "major third below";
+        break;
       case -5:
-          returnString = "perfect fourth below";
-          break;
+        returnString = "perfect fourth below";
+        break;
       case -6:
-          returnString = "tritone below";
-          break;
+        returnString = "tritone below";
+        break;
       case -7:
-          returnString = "perfect fifth below";
-          break;
-      //TODO implement the rest of the half steps
+        returnString = "perfect fifth below";
+        break;
+      // TODO implement the rest of the half steps
     }
-    
+
     return returnString;
   }
-  
-  public static String pitchNumberToChromaticNoteName(int pitchNumber){
-    if(pitchNumber < 0){
-//      throw new IllegalArgumentException("Pitch numbers cannot be negative");
-      while(pitchNumber < 0){
+
+
+  /**
+   * 
+   * @param pitchNumber the note in the chromatic scale where 0 maps to C and each half step above
+   *        is 1 number higher
+   * @return The pitch name for the given pitch number, where C is 0.
+   */
+  public static String pitchNumberToChromaticNoteName(int pitchNumber) {
+    if (pitchNumber < 0) {
+      while (pitchNumber < 0) {
         pitchNumber += 12;
       }
     }
     String noteName = null;
     // Reduce the pitch number to fit into one octave
     pitchNumber %= 12;
-    switch (pitchNumber){
+    switch (pitchNumber) {
       case 0:
         noteName = "C";
         break;
@@ -107,18 +125,23 @@ public class Interval {
     return noteName;
   }
 
-  public static String altoClefNoteNameForLineNumber(int lineNumber){
+  public static String altoClefNoteNameForLineNumber(int lineNumber) {
     String lineName = null;
-    switch(lineNumber){
-      case 0: lineName = "F";
+    switch (lineNumber) {
+      case 0:
+        lineName = "F";
         break;
-      case 1: lineName = "A";
+      case 1:
+        lineName = "A";
         break;
-      case 2: lineName = "C";
+      case 2:
+        lineName = "C";
         break;
-      case 3: lineName = "E";
+      case 3:
+        lineName = "E";
         break;
-      case 4: lineName = "G";
+      case 4:
+        lineName = "G";
         break;
     }
     return lineName;

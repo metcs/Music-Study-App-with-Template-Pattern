@@ -22,7 +22,6 @@ public class Main {
     int numQuestionOptions = 3;
     while(true){
       question = questionFactory.getQuestion(random.nextInt(numQuestionOptions));
-//      question = questionFactory.getQuestion(1);
       System.out.println(question.getQuestion());
       String userAnswer = in.nextLine();
       if(question.checkForCorrectAnswer(userAnswer)){

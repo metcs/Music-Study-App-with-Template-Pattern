@@ -9,8 +9,8 @@ public class SimpleIntervalUpQuestion extends Question {
   private int halfStepsUp;
   private String question;
   private String answer;
-  
-  
+
+
   @Override
   public void createQuestion() {
     String intervalAsString = Interval.numerOfHalfStepsAsString(this.halfStepsUp);
@@ -31,6 +31,7 @@ public class SimpleIntervalUpQuestion extends Question {
 
   @Override
   public boolean checkForCorrectAnswer(String givenAnswer) {
+    // Format the incoming answer to the expected format
     return formatAnswer(givenAnswer).equals(this.answer);
   }
 

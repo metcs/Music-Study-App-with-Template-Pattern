@@ -7,7 +7,7 @@ public class AltoClefQuestion extends Question {
   private String question;
   private int lineNumber;
   private String answer;
-  
+
   @Override
   public String getAnswer() {
     return this.answer;
@@ -16,22 +16,30 @@ public class AltoClefQuestion extends Question {
   @Override
   public void createQuestion() {
     String formattedName = null;
-    switch(this.lineNumber){
-      case 0: formattedName = "first";
+    switch (this.lineNumber) {
+      case 0:
+        formattedName = "first";
         break;
-      case 1: formattedName = "second";
+      case 1:
+        formattedName = "second";
         break;
-      case 2: formattedName = "third";
+      case 2:
+        formattedName = "third";
         break;
-      case 3: formattedName = "fourth";
+      case 3:
+        formattedName = "fourth";
         break;
-      case 4: formattedName = "fifth";
-      break;
+      case 4:
+        formattedName = "fifth";
+        break;
     }
-    this.question = String.format("What is the note on the %s line of the alto clef?" 
-        , formattedName);
+    this.question =
+        String.format("What is the note on the %s line of the alto clef?", formattedName);
   }
 
+  /**
+   * Generates the random values to be inserted into the question and answer.
+   */
   @Override
   public void generateRandomValues() {
     Random random = new Random();
@@ -51,6 +59,7 @@ public class AltoClefQuestion extends Question {
 
   @Override
   public boolean checkForCorrectAnswer(String givenAnswer) {
+    // Format the incoming answer to the expected format
     return formatAnswer(givenAnswer).equals(this.answer);
   }
 }
